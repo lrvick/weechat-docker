@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export HOME=/home/weechat
+export LANG=en_US.UTF-8
+export TERM=screen-256color
+
+chpst -u weechat \
+	tmux -f /var/service/tmux/tmux.conf new-session -d 'weechat-curses'
+
+pid="$(chpst -u weechat tmux display-message -pF '#{pid}')"
+
+while kill -0 "$pid" >/dev/null 2>&1; do
+ sleep 1
+done
