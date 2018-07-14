@@ -27,6 +27,6 @@ ADD var/ /var/
 
 VOLUME ["/home/weechat"]
 
-EXPOSE 22
+EXPOSE 22,9000
 
 CMD ["/sbin/runit-init"]
