@@ -13,6 +13,7 @@ RUN \
     weechat-perl \
     weechat-ruby \
     weechat-python \
+    openssl1.0 \
     rsync \
     bash \
     tmux && \
