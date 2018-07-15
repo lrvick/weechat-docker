@@ -14,6 +14,7 @@ RUN \
     weechat-ruby \
     weechat-python \
     rsync \
+    bash \
     tmux && \
     rm -rf /tmp/* /var/cache/apk/* /etc/motd
 

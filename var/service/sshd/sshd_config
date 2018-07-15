@@ -15,4 +15,3 @@ IgnoreRhosts yes
 HostbasedAuthentication no
 TCPKeepAlive yes
 AcceptEnv LANG LC_*
-ForceCommand tmux attach

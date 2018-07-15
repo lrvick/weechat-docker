@@ -5,7 +5,7 @@ export LANG="en_US.UTF-8"
 export TERM="screen-256color"
 
 id -u "$USER" &>/dev/null || \
-	useradd -m -d "/home/$USER" -s /bin/sh "$USER"
+	useradd -m -d "/home/$USER" -s /bin/bash "$USER"
 usermod -p '*' "$USER"
 chown -R "$USER": "/home/$USER"
 
