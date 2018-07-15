@@ -9,10 +9,12 @@ id -u "$USER" &>/dev/null || \
 usermod -p '*' "$USER"
 chown -R "$USER": "/home/$USER"
 
+cd "/home/$USER" || exit
+
 chpst -u "$USER" \
 	tmux -f /var/service/tmux/tmux.conf new-session -d 'weechat-curses'
 
-pid="$(chpst -u ${USER} tmux display-message -pF '#{pid}')"
+pid=$(chpst -u "$USER" tmux display-message -pF '#{pid}')
 
 while kill -0 "$pid" >/dev/null 2>&1; do
  sleep 1
