@@ -1,13 +1,18 @@
 #!/bin/sh
 
-export HOME=/home/weechat
-export LANG=en_US.UTF-8
-export TERM=screen-256color
+export HOME="/home/$USER"
+export LANG="en_US.UTF-8"
+export TERM="screen-256color"
 
-chpst -u weechat \
+id -u "$USER" &>/dev/null || \
+	useradd -m -d "/home/$USER" -s /bin/sh "$USER"
+usermod -p '*' "$USER"
+chown -R "$USER": "/home/$USER"
+
+chpst -u "$USER" \
 	tmux -f /var/service/tmux/tmux.conf new-session -d 'weechat-curses'
 
-pid="$(chpst -u weechat tmux display-message -pF '#{pid}')"
+pid="$(chpst -u ${USER} tmux display-message -pF '#{pid}')"
 
 while kill -0 "$pid" >/dev/null 2>&1; do
  sleep 1

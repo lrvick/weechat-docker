@@ -14,18 +14,17 @@ RUN \
     weechat-ruby \
     weechat-python \
     tmux && \
-    rm -rf /tmp/* /var/cache/apk/* /etc/motd && \
-  useradd -m -d /home/weechat -s /bin/sh weechat && \
-  usermod -p '*' weechat
+    rm -rf /tmp/* /var/cache/apk/* /etc/motd
 
 STOPSIGNAL SIGCONT
 
 ENV AUTHORIZED_KEYS ""
+ENV USER "weechat"
 
 ADD etc/ /etc/
 ADD var/ /var/
 
-VOLUME ["/home/weechat"]
+VOLUME ["/home"]
 
 EXPOSE 22
 EXPOSE 9000
