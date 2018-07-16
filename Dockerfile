@@ -5,7 +5,6 @@ RUN \
     runit \
     shadow \
     openssh \
-    python3 \
     python \
     weechat \
     weechat-aspell \
@@ -16,8 +15,23 @@ RUN \
     openssl1.0 \
     rsync \
     bash \
+    aspell \
+    aspell-en \
     tmux && \
-    rm -rf /tmp/* /var/cache/apk/* /etc/motd
+  apk add \
+    --no-cache \
+    --virtual build-dependencies \
+    lua-cjson \
+    python-dev \
+    py-pip \
+    libffi \
+    libffi-dev \
+    mpc1-dev \
+    gmp-dev \
+    mpfr-dev \
+    openssl1.0-dev \
+    build-base && \
+  rm -rf /tmp/* /var/cache/apk/* /etc/motd
 
 STOPSIGNAL SIGCONT
 
