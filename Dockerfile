@@ -35,6 +35,6 @@ ADD var/ /var/
 VOLUME ["/home"]
 
 EXPOSE 22
-EXPOSE 9000
+EXPOSE 9001
 
 CMD ["/sbin/runit-init"]
