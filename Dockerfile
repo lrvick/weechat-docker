@@ -1,5 +1,13 @@
 FROM alpine:edge
 
+ENV LANG=C.UTF-8 \
+    TZ=UTC \
+    TERM=screen-256color \
+    AUTHORIZED_KEYS="" \
+    USER="weechat"
+
+STOPSIGNAL SIGCONT
+
 RUN \
   apk add --no-cache \
     runit \
@@ -15,28 +23,11 @@ RUN \
     openssl1.0 \
     rsync \
     bash \
+    tzdata \
     aspell \
     aspell-en \
     tmux && \
-  apk add \
-    --no-cache \
-    --virtual build-dependencies \
-    lua-cjson \
-    python-dev \
-    py-pip \
-    libffi \
-    libffi-dev \
-    mpc1-dev \
-    gmp-dev \
-    mpfr-dev \
-    openssl1.0-dev \
-    build-base && \
   rm -rf /tmp/* /var/cache/apk/* /etc/motd
-
-STOPSIGNAL SIGCONT
-
-ENV AUTHORIZED_KEYS ""
-ENV USER "weechat"
 
 ADD etc/ /etc/
 ADD var/ /var/
