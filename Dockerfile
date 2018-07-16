@@ -2,7 +2,7 @@ FROM alpine:edge
 
 ENV LANG=C.UTF-8 \
     TZ=UTC \
-    TERM=screen-256color \
+    TERM=xterm-256color \
     AUTHORIZED_KEYS="" \
     USER="weechat"
 

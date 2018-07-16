@@ -10,7 +10,7 @@ chown -R "$USER": "/home/$USER"
 cd "/home/$USER" || exit
 
 chpst -u "$USER" \
-	tmux -f /var/service/tmux/tmux.conf new-session -d 'weechat-curses'
+	tmux -f "/home/$USER/.tmux.conf" new-session -d 'weechat-curses'
 
 pid=$(chpst -u "$USER" tmux display-message -pF '#{pid}')
 
